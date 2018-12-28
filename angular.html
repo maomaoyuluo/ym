@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>angular0</title>
+	<link rel="stylesheet" href="">
+	<style>
+		.app{
+			padding: 300px;
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+		ng-app:指定一个angular应用程序，也就是声明了angular起作用的范围;一个HTML只能有一个ng-app;
+		ng-init:进行数据的初始化，可以声明JS变量，值可以是number,string，Boolean,Object array ,声明额变量可以在angular应用程序中使用;
+		ng-model:将变量的值与DOM进行绑定，并且是双向的绑定，变量值发生变化，DOM变化，DOM中的值变化，变量值变化;
+		{{}}:表达式，表达式与JS中的表达式相似，可以接受运算符，变量，将表达式的运行结果绑定的DOM上，这个绑定是单向的，DOM显示的内容会根据变量
+		而变化，但是显示的内容变化并不会影响变量的值，也就是有从变量中读取的公共，没有为变量赋值的能力;
+		ng-bind:将变量的值绑定在DOM；
+
+
+	 -->
+	 <div class="app" ng-app="app" ng-init="msg='Hello Angular!';name='';list=['久旱逢甘霖','他乡遇故知-情敌','金榜题名时-重名','洞房花烛夜-隔壁'];lists=[{str:'久旱逢甘霖'},{str:'他乡遇故知-情敌'},{str:'金榜题名时-重名'},{str:'洞房花烛夜-隔壁'}]">
+		 <h1>{{msg}},{{name}}</h1>
+		 <h1 ng-bind="msg+','+name"></h1>
+		 <input type="text"  ng-model="name">
+		 <ul>
+			 <!-- <h1>四大喜</h1> -->
+			 <li ng-repeat=" x in list">{{x}}</li>
+		 </ul>
+		 <!-- <ul>
+			 <h2>四大悲</h2>
+			 <li ng-repeat="(x,y) in lists">{{x.str}}-{{y}}</li>
+		 </ul> -->
+		  <!-- <div ng-app='' ng-init="'test=测试'">
+		 <h1>{{test}}</h1>
+	 </div> -->
+		 
+	 
+	 <!-- 
+		 M=data ->声明了变量
+		 V=html -> 用户看到的内容
+		 VM=vue -> 通过VM使用中的变量并在V中渲染；
+		MVVM:
+
+
+	  -->
+		<!-- 使用自定义指令 -->
+		<!-- 1.元素的形式，需要通过双标签，不能通过单标签 -->
+		<my_component></my_component>
+		<!-- 2.通过属性 -->
+		<div my_component></div>
+		<!-- 3.通过类名 -->
+		<div class='my_component'></div>
+		<!-- 4.通过注释 -->
+		<!-- directive:my_component -->
+
+		<form action="" name="myForm">
+			email:<input type="email" name="myEmail" ng-model="text">
+			<span ng-show="myForm.myEmail.$error.email">当前邮箱格式错误</span>
+			<p>error:{{myForm.myEmail.$error.email}}</p>
+			<p>vaild:{{myForm.myEmail.$valid}}</p>
+			<p>dirty:{{myForm.myEmail.$dirty}}</p>
+			<p>touched:{{myForm.myEmail.$touched}}</p>
+		</form>
+	 </div>
+	
+	 
+</body>
+<!-- 通过CDN引入angular.js文件 -->
+<script src="https://cdn.staticfile.org/angular.js/1.4.6/angular.min.js"></script>
+<script>
+	// 初始化app对象
+	let app = angular.module('app',[]);
+	// 创建自定义指令（功能与效果和Vue自定义组件一样）;
+	// 自定义指令的名字，如果包含多个单词，请使用驼峰命名，在使用的时候，不使用驼峰命名，需要用'_'将各个单词连接；
+	app.directive('myComponent',function(){
+		return{
+			// 对自定义指令的设置，可以使用angular声明的变量以及angular提供的指令;
+			// 对使用方式的配置，默认'EA'
+			restrict:'EAMC',
+			replace:true,//默认情况注释的代码不会被加载，需要通过设置replace：true来显示注释
+			// 对自定义指令的设置，可以使用angular声明的变量以及angular提供的指令
+			template:'<h1>这是自定义指令,{{msg}}</h1>'
+		}
+	})
+</script>
+</html>
