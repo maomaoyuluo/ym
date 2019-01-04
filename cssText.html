@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cssText</title>
+	<style>
+	/* 圣杯布局 */
+		.left,.right,.center{
+			min-height: 130px;
+			float: left;
+			position: relative;
+		}
+		.left{
+			background: green;
+			width: 200px;
+			margin-left: -100%;
+			left: -200px;
+		}
+		.center{
+			width: 100%;
+			background: red;
+		}
+		.right{
+			margin-left: -300px;
+			background: blue;
+			width: 300px;
+			right: -300px;
+		}
+		.contain{
+			padding: 0 300px 0 200px;
+		}
+		/* 双飞翼布局 */
+		.center1{
+			margin: 0 300px 0 200px;
+		}
+		.left1,.right1,.main{
+			min-height: 130px;
+			float: left;
+			/* text-align: center; */
+		}
+		.left1{
+			background: green;
+			width: 200px;
+			margin-left: -100%;
+		}
+		.right1{
+			background: blue;
+			width: 300px;
+			margin-left: -300px;
+		}
+		.main{
+			background: red;
+			width: 100%;
+		}
+		/* flex */
+		.flexible{
+			display: flex;
+			min-height: 130px;
+
+		}
+		.main2{
+			/* 设置弹性盒子的扩展比率 */
+			flex-grow: 1;
+			background: red;
+		}
+		.left2{
+			/* 设置和检索弹性盒模型对象的子元素出现的顺序 */
+			order: -1;
+			/* 用于设置弹性和伸缩基准值
+			注：如果元素不是弹性盒队形对象的元素，则flex-basis不起作用； */
+			flex-basis: 200px;
+			background: green;
+		}
+		.right2{
+			flex-basis: 300px;
+			background: blue;
+		}
+		/* 绝对定位布局 */
+		.absolution{
+			position: relative;
+		}
+		.main3,.left3,.right3{
+			min-height: 130px;
+			top: 0;
+		}
+		.main3{
+			padding: 0 300px 0 200px;
+			background: red;
+		}
+		.right3{
+			position: absolute;
+			width: 300px;
+			background: blue;
+			right: 0;
+		}
+		.left3{
+			position: absolute;
+			width: 200px;
+			background: green;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<!-- <div id="box"></div> -->
+	<h3>圣杯布局</h3>
+	<div class="contain">
+		<div class="center">center</div>
+		<div class="left">left</div>
+		<div class="right">right</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<h3>双飞翼布局</h3>
+	<div class="container">
+		<div class="main">
+			<div class="center1">main</div>
+		</div>
+		<div class="left1">left</div>
+		<div class="right1">right</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<h3>flex布局</h3>
+	<div class="flexible">
+		<div class="main2">main2</div>
+		<div class="left2">left2</div>
+		<div class="right2">right2</div>
+	</div>
+	<br>
+	<br>
+	<h3>绝对定位布局</h3>
+	<div class="absolution">
+		<div class="main3">main3</div>
+		<div class="left3">left3</div>
+		<div class="right3">right3</div>
+	</div>
+</body>
+<script>
+	// var ele = document.getElementById('box');
+	// ele.style.cssText = "width:100px;height:100px;padding:10px;background:red";//推荐使用
+	
+
+</script>
+</html>
